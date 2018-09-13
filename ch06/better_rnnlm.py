@@ -12,10 +12,12 @@ class BetterRnnlm(BaseModel):
         rn = np.random.randn
 
         embed_W = (rn(V, D) / 100).astype('f')
-        lstm_Wx = (rn(D, 4 * H) / np.sqrt(D)).astype('f')
-        lstm_Wh = (rn(H, 4 * H) / np.sqrt(H)).astype('f')
-        lstm_b = np.zeros(4 * H).astype('f')
-        affine_W = (rn(H, V) / np.sqrt(H)).astype('f')
+        lstm_Wx1 = (rn(D, 4 * H) / np.sqrt(D)).astype('f')
+        lstm_Wh1 = (rn(H, 4 * H) / np.sqrt(H)).astype('f')
+        lstm_b1 = np.zeros(4 * H).astype('f')
+        lstm_Wx2 = (rn(D, 4 * H) / np.sqrt(D)).astype('f')
+        lstm_Wh2 = (rn(H, 4 * H) / np.sqrt(H)).astype('f')
+        lstm_b2 = np.zeros(4 * H).astype('f')
         affine_b = np.zeros(V).astype('f')
 
         # 3つの改善！
@@ -40,7 +42,7 @@ class BetterRnnlm(BaseModel):
     def predict(self, xs, train_flg=False):
         for layer in self.drop_layers:
             layer.train_flg = train_flg
-        for layer in self.lerys:
+        for layer in self.layers:
             xs = layer.forward(xs)
         return xs
 

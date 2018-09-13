@@ -3,11 +3,11 @@ sys.path.append('..')
 from common import config
 # GPUで実行する場合は下記のコメントアウトを消去
 # =============================================
-# config.GPU = True
+config.GPU = True
 # =============================================
 from common.optimizer import SGD
 from common.trainer import RnnlmTrainer
-from common.util import enval_perplexity
+from common.util import eval_perplexity
 from dataset import ptb
 from better_rnnlm import BetterRnnlm
 
