@@ -219,7 +219,7 @@ class TimeLSTM:
         self.h, self.c = h, c
 
     def reset_state(self):
-        self.h, selc.c = None, None
+        self.h, self.c = None, None
 
 
 class TimeEmbedding:
