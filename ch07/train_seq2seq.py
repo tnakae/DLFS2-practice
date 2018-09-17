@@ -13,6 +13,9 @@ from seq2seq import Seq2seq
 (x_train, t_train), (x_test, t_test) = sequence.load_data('addition.txt')
 char_to_id, id_to_char = sequence.get_vocab()
 
+# 入力データを反転させる
+x_train, x_test = x_train[:, ::-1], x_test[:, ::-1]
+
 # ハイパーパラメータの設定
 vocab_size = len(char_to_id)
 wordvec_size = 16
